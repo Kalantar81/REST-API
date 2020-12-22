@@ -10,7 +10,7 @@ let CONTACTS = [
 
 app.use(express.json())
 
-// GET
+// GET  HEAD, like get, but donwt show data from body
 app.get('/api/contacts', (req, res) => {
     setTimeout(() => {
         res.status(200).json(CONTACTS);
@@ -34,6 +34,7 @@ app.delete('/api/contacts/:id', (req, res) => {
 });
 
 // PUT - update a specific element
+// PATCH - like PUT, but change only property in object and not all object
 app.put('/api/contacts/:id', (req, res) => {
     const index = CONTACTS.findIndex(contact => contact.id === req.params.id);
     CONTACTS[index] = req.body;
